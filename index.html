@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>扫雷小游戏</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="page__header">
+        <h1>扫雷小游戏</h1>
+        <p>选择难度或自定义网格，在没有踩雷的情况下翻开所有安全格子！</p>
+      </header>
+
+      <section class="controls">
+        <div class="controls__group">
+          <label for="difficulty">难度：</label>
+          <select id="difficulty">
+            <option value="beginner">初级 (9×9 / 10颗雷)</option>
+            <option value="intermediate">中级 (16×16 / 40颗雷)</option>
+            <option value="expert">高级 (16×30 / 99颗雷)</option>
+            <option value="custom">自定义</option>
+          </select>
+        </div>
+        <form id="custom-form" class="controls__group controls__group--custom" hidden>
+          <label>行：<input type="number" id="rows" min="5" max="30" value="12" /></label>
+          <label>列：<input type="number" id="cols" min="5" max="30" value="12" /></label>
+          <label>雷数：<input type="number" id="mines" min="1" max="200" value="20" /></label>
+        </form>
+        <button id="restart" type="button">重新开始</button>
+      </section>
+
+      <section class="status">
+        <div>剩余雷数：<span id="mines-left">0</span></div>
+        <div>用时：<span id="timer">0</span>s</div>
+        <div id="message" role="status" aria-live="polite"></div>
+      </section>
+
+      <section class="board" id="board" role="grid" aria-label="扫雷棋盘"></section>
+
+      <section class="help">
+        <h2>玩法提示</h2>
+        <ul>
+          <li>左键或点按格子揭开；带数字的格子表示周围 8 个格子中的雷数。</li>
+          <li>右键或长按格子可以插旗标记雷；再次点击取消。</li>
+          <li>揭开所有非雷格子即可获胜，踩到雷则游戏失败。</li>
+        </ul>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
